@@ -1,4 +1,4 @@
-@hostname = https://dimdimapp-joao.azurewebsites.net
+@hostname = https://dimdimapp-a7g9f855cdhakot.brazilsouth.azurewebsites.net
 
 ### 1. Criar Categoria
 POST {{hostname}}/categorias
