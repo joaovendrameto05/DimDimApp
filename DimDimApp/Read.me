@@ -1,0 +1,44 @@
+# Projeto DimDim - Gestão de Gastos
+
+## 📝 Descrição da Solução
+O **DimDim** é uma aplicação de API desenvolvida em .NET 8 para a disciplina de Aplicações e Banco em Nuvem. O objetivo do sistema é permitir a gestão de tarefas e gastos organizados por categorias. 
+
+A solução implementa um CRUD completo para duas entidades relacionadas: **Categorias** e **Tarefas (Todos)**, garantindo a persistência de dados em nuvem e integridade referencial via chaves estrangeiras.
+
+## 🏗️ Arquitetura da Solução
+A aplicação utiliza uma arquitetura de nuvem baseada em PaaS (Platform as a Service) da Microsoft Azure:
+- **Frontend/API:** Hospedada no **Azure App Service** (Web App) com runtime .NET 8.
+- **Banco de Dados:** **Azure SQL Server** (PaaS) para persistência relacional.
+- **CI/CD:** Deploy automatizado via **GitHub Actions** (integrado ao Deployment Center da Azure).
+- **Monitoramento:** **Application Insights** para análise de logs, performance e telemetria.
+
+`Usuário` $\rightarrow$ `Azure App Service (Web App)` $\rightarrow$ `Azure SQL Database`
+
+## 🚀 How To: Implantação em Nuvem
+
+### Pré-requisitos
+- Conta na plataforma Microsoft Azure.
+- Repositório do projeto no GitHub.
+- Azure CLI instalado (para scripts de infraestrutura).
+
+### Passo a Passo da Implantação
+
+1. **Infraestrutura de Banco de Dados:**
+   - Foi criado um Grupo de Recursos (`projeto-dimdim`) na região `brazilsouth`.
+   - Foi provisionado um servidor **Azure SQL Server** e um banco de dados lógico (`admin_dimdim`).
+   - As tabelas foram criadas via script DDL (disponível na pasta `/scripts`).
+
+2. **Provisionamento do App Service:**
+   - Foi criado um Plano de Serviço (App Service Plan) no nível F1 (Free).
+   - Foi criado o Web App `dimdimapp-joao` configurado para .NET 8.
+
+3. **Configuração de Segurança:**
+   - A string de conexão com o banco de dados foi configurada diretamente nas **Configurações de Aplicativo (Environment Variables)** da Azure, evitando a exposição de senhas no código fonte do GitHub.
+
+4. **Deploy Automatizado:**
+   - No portal da Azure, foi acessado o **Centro de Implantação (Deployment Center)**.
+   - A conta do GitHub foi autenticada e o repositório `DimDimApp` foi selecionado.
+   - A branch `main` foi configurada para trigger automático: a cada `push` no GitHub, a Azure atualiza o site automaticamente.
+
+5. **Validação:**
+   - A API foi testada via requisições HTTP para garantir que o CRUD está persistindo os dados corretamente no banco SQL Azure.

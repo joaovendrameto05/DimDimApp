@@ -1,0 +1,25 @@
+{
+  "api_endpoints": {
+    "categorias": {
+      "GET": "/categorias",
+      "POST": "/categorias",
+      "PUT": "/categorias/{id}",
+      "DELETE": "/categorias/{id}",
+      "example_post": {
+        "nome": "Alimentação"
+      }
+    },
+    "todos": {
+      "GET": "/todos",
+      "POST": "/todos",
+      "PUT": "/todos/{id}",
+      "DELETE": "/todos/{id}",
+      "example_post": {
+        "titulo": "Comprar café",
+        "descricao": "Café em grãos",
+        "concluido": false,
+        "categoriaId": 1
+      }
+    }
+  }
+}

@@ -1,0 +1,17 @@
+# 1. Criação do Grupo de Recursos
+az group create --name projeto-dimdim --location brazilsouth
+
+# 2. Criação do Servidor SQL Azure
+az sql server create --name dimdim-db --resource-group projeto-dimdim --location brazilsouth --admin-user admin_dimdim --admin-password <SUA_SENHA>
+
+# 3. Criação do Banco de Dados SQL
+az sql db create --resource-group projeto-dimdim --server dimdim-db --name admin_dimdim --service-objective S0
+
+# 4. Criação do App Service Plan (F1 - Free)
+az appservice plan create --name dimdim-plan --resource-group projeto-dimdim --sku F1 --location brazilsouth
+
+# 5. Criação do Web App (.NET 8)
+az webapp create --resource-group projeto-dimdim --plan dimdim-plan --name dimdimapp-joao --runtime "DOTNET|8.0"
+
+# 6. Configuração da String de Conexão nas Variáveis de Ambiente
+az webapp config connection-string set --name dimdimapp-joao --resource-group projeto-dimdim --connection-string-type SQLAzure --connection-string "Server=tcp:dimdim-db.database.windows.net,1433;Initial Catalog=admin_dimdim;Persist Security Info=False;User ID=admin_dimdim;Password=<SUA_SENHA>;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;"
