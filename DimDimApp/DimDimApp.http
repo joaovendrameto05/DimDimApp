@@ -1,4 +1,4 @@
-@hostname = http://localhost:5224
+@hostname = https://dimdimapp-joao.azurewebsites.net
 
 ### 1. Criar Categoria
 POST {{hostname}}/categorias
