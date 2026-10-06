@@ -1,0 +1,41 @@
+@hostname = http://localhost:5224
+
+### 1. Criar Categoria
+POST {{hostname}}/categorias
+Content-Type: application/json
+
+{
+  "nome": "Estudos"
+}
+
+### 2. Criar Tarefa
+POST {{hostname}}/todos
+Content-Type: application/json
+
+{
+  "title": "Finalizar Projeto DimDim",
+  "dueBy": "2026-10-10",
+  "isComplete": false,
+  "categoriaId": 6
+}
+
+### 3. Listar Todos (Para conferir se criou)
+GET {{hostname}}/todos
+
+### 4. Atualizar Categoria
+PUT {{hostname}}/categorias/6
+Content-Type: application/json
+  
+{
+  "nome": "Estudos Atualizado"
+}
+
+### 5. Listar Categorias (Para conferir se mudou o nome)
+GET {{hostname}}/categorias
+
+### 6. Deletar Tarefa (Sempre delete a tarefa antes da categoria)
+DELETE {{hostname}}/todos/8
+
+### 7. Deletar Categoria
+DELETE {{hostname}}/categorias/6
+
