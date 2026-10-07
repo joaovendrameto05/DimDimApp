@@ -31,7 +31,7 @@ O banco de dados utiliza um relacionamento **1:N (Um para Muitos)**, onde uma Ca
 *   **Categorias**: Armazena a classificação dos gastos (ex: Alimentação, Transporte).
 *   **Todos**: Armazena a tarefa/gasto, descrição, status de conclusão e a chave estrangeira vinculada à categoria.
 
-> **Documentação Técnica:** Os scripts de criação (DDL) encontram-se em: ` /scripts/ddl_tabelas.sql`
+> **Documentação Técnica:** Os scripts de criação (DDL) encontram-se em: ` /scripts/ddl_tabelas.sql`.
 
 ---
 
